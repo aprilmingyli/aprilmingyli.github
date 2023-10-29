@@ -105,4 +105,53 @@ class MyLinkedList:
 # obj.deleteAtIndex(index)
 ```
 
-## 206.反转链表 
+## 206.反转链表
+
+双指针法。这个方法稍微有点难理解，这里用一个简单的例子进行step by step分析
+
+`1 -> 4 -> 2 -> 3`是我们的example linked list
+Before the loop starts:
+cur = 1
+pre IS NULL
+
+While loop started:
+*round 1:*
+
+temp = 4
+
+`cur.next = pre` 相当于断开cur和cur.next的链接，而把cur.next联到pre上，这样，linked list就变为
+
+1 -> NULL   4 -> 2 -> 3
+
+之后对于pre和cur进行更新：
+- pre指针移到cur上，cur现在是1，那么pre就被更新为1。
+- cur也更新为temp 4
+
+*round 2:*
+
+`temp = cur.next`, cur is 4, cur.next = 2, so temp = 2
+`cur.next = pre` linked list就变为:
+    4 -> 1 -> NULL  2 -> 3
+    
+之后对于pre和cur进行更新：
+- pre指针移到cur上，cur现在是4，那么pre就被更新为4。
+- cur也更新为temp 2
+
+...继续循环直至结束
+
+```
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        cur = head   
+        pre = None
+        while cur:
+            temp = cur.next # 保存一下 cur的下一个节点，因为接下来要改变cur->next
+            cur.next = pre #反转
+            #更新pre、cur指针
+            pre = cur
+            cur = temp
+        return pre
+```
+
+递归写法没有理解，链接放在这里之后再看
+https://programmercarl.com/0206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.html#%E6%80%9D%E8%B7%AF
