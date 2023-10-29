@@ -110,11 +110,15 @@ class MyLinkedList:
 双指针法。这个方法稍微有点难理解，这里用一个简单的例子进行step by step分析
 
 `1 -> 4 -> 2 -> 3`是我们的example linked list
+
 Before the loop starts:
+
 cur = 1
+
 pre IS NULL
 
 While loop started:
+
 *round 1:*
 
 temp = 4
@@ -130,6 +134,7 @@ temp = 4
 *round 2:*
 
 `temp = cur.next`, cur is 4, cur.next = 2, so temp = 2
+
 `cur.next = pre` linked list就变为:
     4 -> 1 -> NULL  2 -> 3
     
