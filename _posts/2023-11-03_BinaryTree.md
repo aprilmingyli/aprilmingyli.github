@@ -133,8 +133,38 @@ root.right = TreeNode(3)
 root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
 
+
 # call preorderTraversal function to traverse this tree:
 solution = Solution()
 result = solution.preorderTraversal(root)
 print(result)
+```
+
+
+
+## 中序遍历-递归-LC94_二叉树的中序遍历
+```
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return []
+
+        left = self.inorderTraversal(root.left)
+        right = self.inorderTraversal(root.right)
+
+        return left + [root.val] + right
+```
+
+## 后序遍历-递归-LC145_二叉树的后序遍历
+
+```
+class Solution:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        left = self.postorderTraversal(root.left)
+        right = self.postorderTraversal(root.right)
+
+        return left + right + [root.val]
 ```
